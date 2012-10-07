@@ -1,4 +1,6 @@
 #!/bin/bash
 # The logic to stop your application should be put in this script.
-kill `ps -ef | grep testrubyserver.rb | grep -v grep | awk '{ print $2 }'` > /dev/null 2>&1
-exit 0
+
+pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+play stop > ${OPENSHIFT_LOG_DIR}/server.log 2>&1 &
+popd > /dev/null
