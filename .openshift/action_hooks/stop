@@ -8,5 +8,5 @@ export PATH=$PATH:${OPENSHIFT_DATA_DIR}scala-${SCALA_VERSION}/bin
 export PATH=$PATH:${OPENSHIFT_DATA_DIR}play-2.0.4
 
 pushd ${OPENSHIFT_REPO_DIR} > /dev/null
-play stop > ${OPENSHIFT_LOG_DIR}/server.log 2>&1 &
+play stop >> ${OPENSHIFT_LOG_DIR}/server.log 2>&1 &
 popd > /dev/null

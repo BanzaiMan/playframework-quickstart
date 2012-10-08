@@ -8,15 +8,22 @@ source `dirname $0`/vars
 
 pushd ${OPENSHIFT_DATA_DIR} > /dev/null
 if [ ! -d scala-${SCALA_VERSION} ]; then
-  wget ${SCALA_DIST_DIR}/scala-${SCALA_VERSION}.tgz
-  tar xzf scala-${SCALA_VERSION}.tgz
+  wget ${SCALA_DIST_DIR}/scala-${SCALA_VERSION}.tgz > /dev/null
+  tar xzf scala-${SCALA_VERSION}.tgz > /dev/null
 fi
 export PATH=$PATH:${OPENSHIFT_DATA_DIR}scala-${SCALA_VERSION}/bin
 
 if [ ! -d play-${PLAY_VERSION} ]; then
-  wget ${PLAY_DIST_DIR}/play-${PLAY_VERSION}.zip
+  wget ${PLAY_DIST_DIR}/play-${PLAY_VERSION}.zip > /dev/null
   unzip play-${PLAY_VERSION}.zip > /dev/null
 fi
 export PATH=$PATH:${OPENSHIFT_DATA_DIR}play-2.0.4
+
+# Generate the 'start' script, so that it can be used for subsequent starts
+if [ ! -e ${OPENSHIFT_REPO_DIR}target/start ]; then
+  pushd ${OPENSHIFT_REPO_DIR} > /dev/null
+  play stage
+  popd > /dev/null
+fi
 
 popd > /dev/null
