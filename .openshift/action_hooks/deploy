@@ -4,10 +4,7 @@
 # up again.  This script gets executed directly, so it could be python, php,
 # ruby, etc.
 
-SCALA_VERSION='2.9.2'
-SCALA_DIST_DIR='http://www.scala-lang.org/downloads/distrib/files'
-PLAY_VERSION='2.0.4'
-PLAY_DIST_DIR='http://download.playframework.org/releases'
+source `dirname $0`/vars
 
 pushd ${OPENSHIFT_DATA_DIR} > /dev/null
 if [ ! -d scala-${SCALA_VERSION} ]; then

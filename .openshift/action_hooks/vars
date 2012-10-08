@@ -1,0 +1,5 @@
+SCALA_VERSION='2.9.2'
+SCALA_DIST_DIR='http://www.scala-lang.org/downloads/distrib/files'
+PLAY_VERSION='2.0.4'
+PLAY_DIST_DIR='http://download.playframework.org/releases'
+
